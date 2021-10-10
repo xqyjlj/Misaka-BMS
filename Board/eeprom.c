@@ -178,8 +178,11 @@ static int eeprom_init()
         Misaka_AT24CXX_Write(at24cxx_obj, at24cxx_obj->capacity - 2, &rxbuf, 1);
     }
 
-    Restore_Factory_Parameters();//TODO 正式使用时注释掉
+#if DEBUG == 1
 
+    Restore_Factory_Parameters();
+
+#endif
     return 0;
 }
 
