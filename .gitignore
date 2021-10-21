@@ -1,2 +1,12 @@
-*.mxproject
-.vscode
+.idea
+.clion
+
+cmake-build-*/
+
+build
+mdk/DebugConfig
+mdk/misaka-bms
+mdk/RTE
+
+mdk/misaka-bms.uvoptx
+mdk/misaka-bms.uvguix.*
