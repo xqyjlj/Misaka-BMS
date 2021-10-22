@@ -1,3 +1,11 @@
 [submodule "middleware/misaka_cutil"]
 	path = middleware/misaka_cutil
 	url = https://github.com/xqyjlj/misaka_cutil.git
+
+[submodule "middleware/misaka_at24cxx"]
+	path = middleware/misaka_at24cxx
+	url = https://github.com/xqyjlj/misaka_at24cxx.git
+
+[submodule "middleware/misaka_device"]
+	path = middleware/misaka_device
+	url = https://github.com/xqyjlj/misaka_device.git

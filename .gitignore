@@ -1,12 +1,16 @@
 .idea
 .clion
+.vscode
 
 cmake-build-*/
 
 build
 mdk/DebugConfig
-mdk/misaka-bms
+mdk/misaka_bms
 mdk/RTE
 
-mdk/misaka-bms.uvoptx
-mdk/misaka-bms.uvguix.*
+mdk/misaka_bms.uvoptx
+mdk/misaka_bms.uvguix.*
+
+cubemx/.mxproject
+cubemx/Makefile

@@ -13,7 +13,7 @@ set(SIZE arm-none-eabi-size)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # project settings
-project(misaka-bms C CXX ASM)
+project(misaka_bms C CXX ASM)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
@@ -58,6 +58,9 @@ file(GLOB_RECURSE src_file
      "middleware/misaka_cutil/string/*.*"
      "middleware/misaka_cutil/util/*.*"
 
+     "middleware/misaka_at24cxx/src/*.c"
+     "middleware/misaka_device/soft_i2c/*.c"
+
      "board/*.c"
      )
 
@@ -89,6 +92,10 @@ include_directories( cubemx/Core/Inc
                      middleware/misaka_cutil/sort/inc
                      middleware/misaka_cutil/string/inc
                      middleware/misaka_cutil/util/inc
+
+                     middleware/misaka_at24cxx/inc
+
+                     middleware/misaka_device/inc
 
                      board/inc
                      )
