@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_FULL_LL_DRIVER,USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>..\cubemx\Core\Inc;..\cubemx\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy;..\cubemx\Drivers\STM32F1xx_HAL_Driver\Inc;..\cubemx\Drivers\CMSIS\Device\ST\STM32F1xx\Include;..\cubemx\Drivers\CMSIS\Include</IncludePath>
+              <IncludePath>..\cubemx\Core\Inc;..\cubemx\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy;..\cubemx\Drivers\STM32F1xx_HAL_Driver\Inc;..\cubemx\Drivers\CMSIS\Device\ST\STM32F1xx\Include;..\cubemx\Drivers\CMSIS\Include;..\middleware\rt-thread;..\middleware\rt-thread\include;..\middleware\rt-thread\include\libc;..\middleware\rt-thread\components\finsh;..\board;..\board\inc;..\middleware\misaka_cutil\list\inc;..\middleware\misaka_cutil\sort\inc;..\middleware\misaka_cutil\string\inc;..\middleware\misaka_cutil\util\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -387,16 +387,6 @@
               <FileName>app_main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\app\app_main.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>startup</GroupName>
-          <Files>
-            <File>
-              <FileName>startup_stm32f103xb.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>startup_stm32f103xb.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -508,6 +498,31 @@
               <FileName>stm32f1xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\cubemx\Core\Src\stm32f1xx_hal_msp.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>board</GroupName>
+          <Files>
+            <File>
+              <FileName>board.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\board\board.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\board\system.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drivers/cmsis</GroupName>
+          <Files>
+            <File>
+              <FileName>system_stm32f1xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\cubemx\Core\Src\system_stm32f1xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -975,12 +990,215 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>drivers/cmsis</GroupName>
+          <GroupName>middleware/finsh</GroupName>
           <Files>
             <File>
-              <FileName>system_stm32f1xx.c</FileName>
+              <FileName>cmd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\cubemx\Core\Src\system_stm32f1xx.c</FilePath>
+              <FilePath>..\middleware\rt-thread\components\finsh\cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>msh.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\components\finsh\msh.c</FilePath>
+            </File>
+            <File>
+              <FileName>shell.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\components\finsh\shell.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>middleware/misaka_cutil</GroupName>
+          <Files>
+            <File>
+              <FileName>listd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\list\src\listd.c</FilePath>
+            </File>
+            <File>
+              <FileName>listdc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\list\src\listdc.c</FilePath>
+            </File>
+            <File>
+              <FileName>lists.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\list\src\lists.c</FilePath>
+            </File>
+            <File>
+              <FileName>listsc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\list\src\listsc.c</FilePath>
+            </File>
+            <File>
+              <FileName>sortbubble.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\sort\src\sortbubble.c</FilePath>
+            </File>
+            <File>
+              <FileName>sortinsert.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\sort\src\sortinsert.c</FilePath>
+            </File>
+            <File>
+              <FileName>sortselect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\sort\src\sortselect.c</FilePath>
+            </File>
+            <File>
+              <FileName>string.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\string\src\string.c</FilePath>
+            </File>
+            <File>
+              <FileName>util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\misaka_cutil\util\src\util.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>middleware/rt-thread</GroupName>
+          <Files>
+            <File>
+              <FileName>clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>components.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\components.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\cpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>idle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\idle.c</FilePath>
+            </File>
+            <File>
+              <FileName>ipc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\ipc.c</FilePath>
+            </File>
+            <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>kservice.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\kservice.c</FilePath>
+            </File>
+            <File>
+              <FileName>mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>memheap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\memheap.c</FilePath>
+            </File>
+            <File>
+              <FileName>mempool.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\mempool.c</FilePath>
+            </File>
+            <File>
+              <FileName>object.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\object.c</FilePath>
+            </File>
+            <File>
+              <FileName>scheduler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\scheduler.c</FilePath>
+            </File>
+            <File>
+              <FileName>slab.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\slab.c</FilePath>
+            </File>
+            <File>
+              <FileName>thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\src\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpuport.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\middleware\rt-thread\libcpu\arm\cortex-m3\cpuport.c</FilePath>
+            </File>
+            <File>
+              <FileName>context_rvds.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\middleware\rt-thread\libcpu\arm\cortex-m3\context_rvds.S</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Aads>
+                    <interw>2</interw>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <thumb>2</thumb>
+                    <SplitLS>2</SplitLS>
+                    <SwStkChk>2</SwStkChk>
+                    <NoWarn>2</NoWarn>
+                    <uSurpInc>2</uSurpInc>
+                    <useXO>2</useXO>
+                    <ClangAsOpt>0</ClangAsOpt>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Aads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
+              <FileName>context_gcc.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\middleware\rt-thread\libcpu\arm\cortex-m3\context_gcc.S</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>startup</GroupName>
+          <Files>
+            <File>
+              <FileName>startup_stm32f103xb.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>startup_stm32f103xb.s</FilePath>
             </File>
           </Files>
         </Group>

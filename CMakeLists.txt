@@ -48,9 +48,28 @@ file(GLOB_RECURSE src_file
      "cubemx/Core/Src/*.c"
      "app/app_main.c"
      "cubemx/Drivers/STM32F1xx_HAL_Driver/Src/*.c"
+
+     "middleware/rt-thread/components/finsh/*.c"
+     "middleware/rt-thread/src/*.c"
+     "middleware/rt-thread/libcpu/arm/cortex-m3/cpuport.c"
+
+     "middleware/misaka_cutil/list/*.*"
+     "middleware/misaka_cutil/sort/*.*"
+     "middleware/misaka_cutil/string/*.*"
+     "middleware/misaka_cutil/util/*.*"
+
+     "board/*.c"
      )
 
-file(GLOB_RECURSE no_src_file "cubemx/Drivers/STM32F1xx_HAL_Driver/Src/*template.c")
+file(GLOB_RECURSE no_src_file
+     "cubemx/Drivers/STM32F1xx_HAL_Driver/Src/*template.c"
+     "middleware/misaka_cutil/*test.c"
+     )
+
+file(GLOB_RECURSE asm_file
+     "middleware/rt-thread/libcpu/arm/cortex-m3/context_gcc.S"
+     "gcc/startup_stm32f103xb.s"
+     )
 
 list(REMOVE_ITEM src_file ${no_src_file})
 
@@ -60,9 +79,24 @@ include_directories( cubemx/Core/Inc
                      cubemx/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
                      cubemx/Drivers/CMSIS/Device/ST/STM32F1xx/Include
                      cubemx/Drivers/CMSIS/Include
+
+                     middleware/rt-thread
+                     middleware/rt-thread/include
+                     middleware/rt-thread/include/libc
+                     middleware/rt-thread/components/finsh
+
+                     middleware/misaka_cutil/list/inc
+                     middleware/misaka_cutil/sort/inc
+                     middleware/misaka_cutil/string/inc
+                     middleware/misaka_cutil/util/inc
+
+                     board/inc
                      )
 
-add_executable(${PROJECT_NAME}.elf "gcc/startup_stm32f103xb.s" ${src_file} ${linker_script})
+add_executable(${PROJECT_NAME}.elf
+               ${asm_file}
+               ${src_file}
+               ${linker_script})
 
 set(hex_file ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(bin_file ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

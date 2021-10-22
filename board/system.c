@@ -1,5 +1,5 @@
 /**
- * @file app_main.c
+ * @file system.c
  * @brief
  * @author xqyjlj (xqyjlj@126.com)
  * @version 0.0
@@ -16,11 +16,14 @@
  * ********************************************************************************
  */
 
-/**
- * @brief 自动初始化所用的堆栈为main函数的堆栈
- * @return int @c
- */
-int main()
-{
+#include "board/system.h"
 
+/**
+ * @brief 展示信息
+ */
+void show_information()
+{
+    sys_printf("\r\n\r\n\r\n");
+    sys_printf("this project designed by xqyjlj<xqyjlj@126.com>\r\n");
+    sys_printf(">[Misaka-Network](https://github.com/xqyjlj/Misaka-Network), Misaka00004\r\n");
 }
