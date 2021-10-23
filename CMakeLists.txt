@@ -60,6 +60,8 @@ file(GLOB_RECURSE src_file
 
      "middleware/misaka_at24cxx/src/*.c"
      "middleware/misaka_device/soft_i2c/*.c"
+     "middleware/misaka_ltc6811/src/*.c"
+     "middleware/misaka_rgb/src/*.c"
 
      "board/*.c"
      )
@@ -67,6 +69,10 @@ file(GLOB_RECURSE src_file
 file(GLOB_RECURSE no_src_file
      "cubemx/Drivers/STM32F1xx_HAL_Driver/Src/*template.c"
      "middleware/misaka_cutil/*test.c"
+     "middleware/misaka_at24cxx/*port.c"
+     "middleware/misaka_device/*port.c"
+     "middleware/misaka_ltc6811/*port.c"
+     "middleware/misaka_rgb/*port.c"
      )
 
 file(GLOB_RECURSE asm_file
@@ -76,29 +82,30 @@ file(GLOB_RECURSE asm_file
 
 list(REMOVE_ITEM src_file ${no_src_file})
 
-include_directories( cubemx/Core/Inc
-                     cubemx/Drivers/STM32F1xx_HAL_Driver/Inc
-                     cubemx/Drivers/STM32F1xx_HAL_Driver/Inc
-                     cubemx/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
-                     cubemx/Drivers/CMSIS/Device/ST/STM32F1xx/Include
-                     cubemx/Drivers/CMSIS/Include
+include_directories(cubemx/Core/Inc
+                    cubemx/Drivers/STM32F1xx_HAL_Driver/Inc
+                    cubemx/Drivers/STM32F1xx_HAL_Driver/Inc
+                    cubemx/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
+                    cubemx/Drivers/CMSIS/Device/ST/STM32F1xx/Include
+                    cubemx/Drivers/CMSIS/Include
 
-                     middleware/rt-thread
-                     middleware/rt-thread/include
-                     middleware/rt-thread/include/libc
-                     middleware/rt-thread/components/finsh
+                    middleware/rt-thread
+                    middleware/rt-thread/include
+                    middleware/rt-thread/include/libc
+                    middleware/rt-thread/components/finsh
 
-                     middleware/misaka_cutil/list/inc
-                     middleware/misaka_cutil/sort/inc
-                     middleware/misaka_cutil/string/inc
-                     middleware/misaka_cutil/util/inc
+                    middleware/misaka_cutil/list/inc
+                    middleware/misaka_cutil/sort/inc
+                    middleware/misaka_cutil/string/inc
+                    middleware/misaka_cutil/util/inc
 
-                     middleware/misaka_at24cxx/inc
+                    middleware/misaka_at24cxx/inc
+                    middleware/misaka_device/inc
+                    middleware/misaka_ltc6811/inc
+                    middleware/misaka_rgb/inc
 
-                     middleware/misaka_device/inc
-
-                     board/inc
-                     )
+                    board/inc
+                    )
 
 add_executable(${PROJECT_NAME}.elf
                ${asm_file}
