@@ -19,7 +19,7 @@
 #include "main.h"
 #include "rtthread.h"
 
-static struct rt_mutex s_misaka_soft_i2c_mutex;
+static struct rt_mutex s_misaka_soft_i2c1_mutex;
 
 static misaka_soft_i2c_t s_i2c1_obj;
 misaka_soft_i2c_t *i2c1_obj;
@@ -28,7 +28,7 @@ extern void delay_us(uint16_t us);
 
 /**
  * @brief 设置sda引脚电平
- * @param  level 0: 低电平 1: 高电平
+ * @param level 0: 低电平 1: 高电平
  */
 static void set_sda(uint8_t level)
 {
@@ -44,7 +44,7 @@ static void set_sda(uint8_t level)
 
 /**
  * @brief 设置scl引脚电平
- * @param  level 0: 低电平 1: 高电平
+ * @param level 0: 低电平 1: 高电平
  */
 static void set_scl(uint8_t level)
 {
@@ -73,7 +73,7 @@ static uint8_t get_sda()
  */
 static void mutex_take()
 {
-	rt_mutex_take(&s_misaka_soft_i2c_mutex, RT_WAITING_FOREVER);
+	rt_mutex_take(&s_misaka_soft_i2c1_mutex, RT_WAITING_FOREVER);
 }
 
 /**
@@ -81,7 +81,7 @@ static void mutex_take()
  */
 static void mutex_release()
 {
-	rt_mutex_release(&s_misaka_soft_i2c_mutex);
+	rt_mutex_release(&s_misaka_soft_i2c1_mutex);
 }
 
 /**
@@ -111,9 +111,9 @@ void misaka_soft_i2c_error_callback(const misaka_soft_i2c_t *ops)
 
 }
 
-int misaka_soft_i2c_port_init()
+static int misaka_soft_i2c_port_init()
 {
-	rt_mutex_init(&s_misaka_soft_i2c_mutex, "s_misaka_soft_i2c_mutex", RT_IPC_FLAG_FIFO);
+	rt_mutex_init(&s_misaka_soft_i2c1_mutex, "misaka_soft_i2c1_mutex", RT_IPC_FLAG_FIFO);
 
 	s_i2c1_obj.delay_us = delay_us;
 	s_i2c1_obj.get_sda = get_sda;

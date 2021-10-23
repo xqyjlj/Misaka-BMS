@@ -16,6 +16,8 @@
  * ********************************************************************************
  */
 #include "misaka_device/rgb.h"
+#include "main.h"
+#include "rtthread.h"
 
 /**
  * @brief 设置RGB引脚
@@ -27,48 +29,80 @@ void misaka_rgb_set_pin(misaka_rgb_color_enum color)
 	{
 		case misaka_rgb_color_none:
 		{
-
+			LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_red:
 		{
-
+			LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_green:
 		{
-
+			LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_blue:
 		{
-
+			LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_yellow:
 		{
-
+			LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_cyan:
 		{
-
+			LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_white:
 		{
-
+			LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_SetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		case misaka_rgb_color_purple:
 		{
-
+			LL_GPIO_SetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_SetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 		default:
 		{
-
+			LL_GPIO_ResetOutputPin(RGB_R_GPIO_Port, RGB_R_Pin);
+			LL_GPIO_ResetOutputPin(RGB_G_GPIO_Port, RGB_G_Pin);
+			LL_GPIO_ResetOutputPin(RGB_B_GPIO_Port, RGB_B_Pin);
 		}
 			break;
 	}
 }
+
+static int rgb_thread_setup(void)
+{
+	misaka_rgb_init(100);
+	misaka_rgb_set_mode(misaka_rgb_color_cyan,
+	                    misaka_rgb_color_blue,
+	                    100,
+	                    100,
+	                    10,
+	                    0);
+	return 0;
+}
+
+INIT_DEVICE_EXPORT(rgb_thread_setup);

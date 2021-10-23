@@ -25,5 +25,5 @@ void show_information()
 {
     sys_printf("\r\n\r\n\r\n");
     sys_printf("this project designed by xqyjlj<xqyjlj@126.com>\r\n");
-    sys_printf(">[Misaka-Network](https://github.com/xqyjlj/Misaka-Network), Misaka00004\r\n");
+    sys_printf(">[misaka](https://github.com/xqyjlj)\r\n");
 }
