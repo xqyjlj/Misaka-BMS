@@ -22,8 +22,3 @@
 	path = middleware/s_misaka_rgb
 	url = https://github.com/xqyjlj/s_misaka_rgb.git
 	branch = main
-
-[submodule "middleware/misaka_beep"]
-	path = middleware/misaka_beep
-	url = https://github.com/xqyjlj/misaka_beep.git
-	branch = main
