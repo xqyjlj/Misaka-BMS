@@ -18,8 +18,8 @@
 	url = https://github.com/xqyjlj/misaka_ltc6811.git
 	branch = main
 
-[submodule "middleware/s_misaka_rgb"]
-	path = middleware/s_misaka_rgb
+[submodule "middleware/misaka_rgb"]
+	path = middleware/misaka_rgb
 	url = https://github.com/xqyjlj/s_misaka_rgb.git
 	branch = main
 
